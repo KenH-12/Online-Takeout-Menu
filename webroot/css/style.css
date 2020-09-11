@@ -522,3 +522,58 @@ table td {
     vertical-align: top;
     word-break: break-all;
 }
+
+.item-category {
+    margin: 20px 0 10px 0;
+}
+.item-category h4 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.menu-item,
+.menu-item * {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.menu-item {
+    padding: 5px 0;
+    border-bottom: 1px dashed #666;
+    margin-bottom: 10px;
+}
+
+.menu-item > div {
+    display: flex;
+}
+
+.menu-item .description {
+    display: block;
+}
+
+.menu-item > div > * {
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item .title {
+    flex: 9;
+    color: #01545b
+}
+
+.menu-item .price,
+.menu-item .btnAdd {
+    flex: 1;
+    text-align: right;
+}
+
+.menu-item .title,
+.menu-item .price {
+    font-size: 1.3em;
+}
+
+.menu-item .btnAdd a {
+    font-size: 2.2em;
+    line-height: 1em;
+}
