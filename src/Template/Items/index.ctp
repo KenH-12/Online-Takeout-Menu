@@ -24,12 +24,22 @@
         }
     ?>
     <div class='menu-item'>
+
         <div>
             <h5 class='title'><?= h($item->title) ?></h5>
             <p class='price'><?= $this->Number->currency($item->price) ?></p>
-            <p class='btnAdd'>+</p>
+            <p class='btn-add'>+</p>
         </div>
+
         <p class='description'><?= h($item->description ? $item->description . "." : "") ?></p>
+
+        <div class='qty-controls hidden'>
+            <button class='btn-subtract-qty btn-plus-minus' type='button' disabled>-</button>
+            <input class='txt-qty' type='number' min='1' value='1' />
+            <button class='btn-add-qty btn-plus-minus' type='button'>+</button>
+            <button class='btn-add-to-cart' type='button'>Add to Cart</button>
+        </div>
+        
     </div>
     <?php endforeach; ?>
 

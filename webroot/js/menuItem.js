@@ -5,44 +5,40 @@ export default class MenuItem
     constructor($menuItem)
     {
         this.$container = $menuItem;
-        this.$btnAddItem = $menuItem.find(".btnAdd");
+        this.$btnAddItem = $menuItem.find(".btn-add");
+        this.$qtyControls = $menuItem.find(".qty-controls");
+        this.$txtQty = $menuItem.find(".txt-qty");
+        this.$btnSubtractQty = $menuItem.find(".btn-subtract-qty");
+        this.$btnAddQty = $menuItem.find(".btn-add-qty");
+        this.$btnAddToCart = $menuItem.find(".btn-add-to-cart");
 
-        this.$btnAddItem.click(() => this.toggleQuantitySelector());
+        this.$btnAddItem.click(() => this.toggleQuantityControls());
     }
 
-    toggleQuantitySelector()
+    toggleQuantityControls()
     {
-        if (this.$qtySelector)
-            return this.hideQuantitySelector();
+        if (this.$qtyControls.hasClass("hidden"))
+            return this.showQuantityControls();
         
-        this.showQuantitySelector();
+        this.hideQuantityControls();    
     }
 
-    showQuantitySelector()
+    showQuantityControls()
     {
-        const { $btnAddItem, $container } = this,
-            $qtySelector = $(`<div class='qty-selector'></div>`).appendTo($container);
-
+        const { $btnAddItem, $qtyControls } = this;
+        
         $btnAddItem.html("-");
-
-        this.$btnSubtractQty = $(`<button class='btn-subtract btn-plus-minus' type='button' disabled>-</button>`).appendTo($qtySelector);
-        this.$txtQty = $(`<input class='txt-qty' type='number' min='1' value='1' />`).appendTo($qtySelector);
-        this.$btnAddQty = $(`<button class='btn-add btn-plus-minus' type='button'>+</button>`).appendTo($qtySelector);
-        this.$btnAddToCart = $(`<button class='btn-add-to-cart' type='button'>Add to Cart</div>`).appendTo($qtySelector);
-        
-        this.$qtySelector = $qtySelector;
+        $qtyControls.removeClass("hidden");
 
         this.bindQuantityControlEventListeners();
     }
 
-    hideQuantitySelector()
+    hideQuantityControls()
     {
-        const $qs = this.$qtySelector;
-        
-        this.$qtySelector = false;
-        this.$btnAddToCart.add($qs).remove();
+        const { $qtyControls, $btnAddItem } = this;
 
-        this.$btnAddItem.html("+");
+        $qtyControls.addClass("hidden");
+        $btnAddItem.html("+");
     }
 
     bindQuantityControlEventListeners()

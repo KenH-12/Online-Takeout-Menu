@@ -523,6 +523,10 @@ table td {
     word-break: break-all;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .item-category {
     margin: 20px 0 10px 0;
 }
@@ -563,7 +567,7 @@ table td {
 }
 
 .menu-item .price,
-.menu-item .btnAdd {
+.menu-item .btn-add {
     flex: 1;
     text-align: right;
 }
@@ -573,31 +577,31 @@ table td {
     font-size: 1.3em;
 }
 
-.menu-item .btnAdd {
+.menu-item .btn-add {
     font-size: 2.2em;
     line-height: 1em;
     cursor: pointer;
 }
 
-.menu-item .qty-selector {
+.menu-item .qty-controls {
     display: flex;
     width: 30%;
 }
 
-.menu-item .qty-selector .btn-plus-minus {
+.menu-item .qty-controls .btn-plus-minus {
     flex: 1
 }
 
-.menu-item .qty-selector .txt-qty,
-.menu-item .qty-selector .btn-add-to-cart {
+.menu-item .qty-controls .txt-qty,
+.menu-item .qty-controls .btn-add-to-cart {
     flex: 2
 }
 
-.menu-item .qty-selector .txt-qty {
+.menu-item .qty-controls .txt-qty {
     text-align: center;
 }
 
-.menu-item .qty-selector .btn-add-to-cart {
+.menu-item .qty-controls .btn-add-to-cart {
     flex: 4;
     margin-left: 20px;
 }
