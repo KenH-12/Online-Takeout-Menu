@@ -4,8 +4,6 @@
  * @var \App\Model\Entity\Item[]|\Cake\Collection\CollectionInterface $items
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-</nav>
 <div class="items index large-9 medium-8 columns content">
 
     <h2><?= __('Online Takeout Menu') ?></h2>
@@ -29,7 +27,7 @@
         <div>
             <h5 class='title'><?= h($item->title) ?></h5>
             <p class='price'><?= $this->Number->currency($item->price) ?></p>
-            <p class='btnAdd'><?= $this->Html->link(__('+'), ['action' => 'view', $item->id]) ?></p>
+            <p class='btnAdd'>+</p>
         </div>
         <p class='description'><?= h($item->description ? $item->description . "." : "") ?></p>
     </div>
@@ -44,5 +42,11 @@
             <?= $this->Paginator->last(__('last') . ' >>') ?>
         </ul>
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+    </div>
+</div>
+
+<div class="large-3 medium-4 columns" >
+    <div id="order-details">
+        
     </div>
 </div>

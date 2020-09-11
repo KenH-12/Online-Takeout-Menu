@@ -573,7 +573,31 @@ table td {
     font-size: 1.3em;
 }
 
-.menu-item .btnAdd a {
+.menu-item .btnAdd {
     font-size: 2.2em;
     line-height: 1em;
+    cursor: pointer;
+}
+
+.menu-item .qty-selector {
+    display: flex;
+    width: 30%;
+}
+
+.menu-item .qty-selector .btn-plus-minus {
+    flex: 1
+}
+
+.menu-item .qty-selector .txt-qty,
+.menu-item .qty-selector .btn-add-to-cart {
+    flex: 2
+}
+
+.menu-item .qty-selector .txt-qty {
+    text-align: center;
+}
+
+.menu-item .qty-selector .btn-add-to-cart {
+    flex: 4;
+    margin-left: 20px;
 }
