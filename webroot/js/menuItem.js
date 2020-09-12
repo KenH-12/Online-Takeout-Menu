@@ -2,9 +2,14 @@
 
 export default class MenuItem
 {
-    constructor($menuItem)
+    constructor($menuItem, orderPanel)
     {
         this.$container = $menuItem;
+
+        this.itemId = $menuItem.find("[name='id']").val();
+        this.title = $menuItem.find(".title").html();
+        this.price = $menuItem.find(".price").html();
+
         this.$btnAddItem = $menuItem.find(".btn-add");
         this.$qtyControls = $menuItem.find(".qty-controls");
         this.$txtQty = $menuItem.find(".txt-qty");
@@ -13,6 +18,7 @@ export default class MenuItem
         this.$btnAddToCart = $menuItem.find(".btn-add-to-cart");
 
         this.$btnAddItem.click(() => this.toggleQuantityControls());
+        this.$btnAddToCart.click(() => orderPanel.addItem(this));
     }
 
     toggleQuantityControls()

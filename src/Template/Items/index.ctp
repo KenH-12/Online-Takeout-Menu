@@ -26,6 +26,7 @@
     <div class='menu-item'>
 
         <div>
+            <?= $this->Form->hidden('id', ['value' => $item->id]) ?>
             <h5 class='title'><?= h($item->title) ?></h5>
             <p class='price'><?= $this->Number->currency($item->price) ?></p>
             <p class='btn-add'>+</p>
@@ -65,22 +66,22 @@
             <div class='table-cell'>No items in cart</div>
         </div>
 
-        <div class='table-row hidden' id='sub-total'>
+        <div class='table-row hidden'>
             <div class='table-cell'></div>
             <div class='table-cell sub-heading'>Sub Total:</div>
-            <div class='table-cell'></div>
+            <div class='table-cell' id='sub-total'></div>
         </div>
 
-        <div class='table-row hidden' id='taxes'>
+        <div class='table-row hidden'>
             <div class='table-cell'></div>
             <div class='table-cell'>Taxes:</div>
-            <div class='table-cell'></div>
+            <div class='table-cell' id='taxes'></div>
         </div>
 
-        <div class='table-row hidden' id='total'>
+        <div class='table-row hidden'>
             <div class='table-cell'></div>
             <div class='table-cell sub-heading'>Total:</div>
-            <div class='table-cell'></div>
+            <div class='table-cell sub-heading' id='total'></div>
         </div>
     </div>
 </div>
