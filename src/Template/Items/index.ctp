@@ -55,8 +55,32 @@
     </div>
 </div>
 
-<div class="large-3 medium-4 columns" >
-    <div id="order-details">
-        
+<div id='order-details'>
+    <div class='table'>
+        <div class='table-row'>
+            <div class='table-cell table-heading'>Item</div>
+            <div class='table-cell table-heading'>Price</div>
+        </div>
+        <div class='table-row' id='no-items'>
+            <div class='table-cell'>No items in cart</div>
+        </div>
+
+        <div class='table-row hidden' id='sub-total'>
+            <div class='table-cell'></div>
+            <div class='table-cell sub-heading'>Sub Total:</div>
+            <div class='table-cell'></div>
+        </div>
+
+        <div class='table-row hidden' id='taxes'>
+            <div class='table-cell'></div>
+            <div class='table-cell'>Taxes:</div>
+            <div class='table-cell'></div>
+        </div>
+
+        <div class='table-row hidden' id='total'>
+            <div class='table-cell'></div>
+            <div class='table-cell sub-heading'>Total:</div>
+            <div class='table-cell'></div>
+        </div>
     </div>
 </div>
