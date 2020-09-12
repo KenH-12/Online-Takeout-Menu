@@ -48,15 +48,14 @@ export default class MenuItem
                 $btnAddQty,
                 $btnSubtractQty
             } = this,
-            getCurrentQuantity = () => parseInt($txtQty.val() || 0),
-            manageBtnSubtractDisabledAttr = (qty) => $btnSubtractQty.prop("disabled", (qty || getCurrentQuantity()) === 1);;
+            manageBtnSubtractDisabledAttr = (qty) => $btnSubtractQty.prop("disabled", (qty || this.getCurrentQuantity()) === 1);
         
         $txtQty.off("keyup").keyup(() => manageBtnSubtractDisabledAttr());
 
         $btnAddQty.off("click")
             .click(() =>
             {
-                $txtQty.val(getCurrentQuantity() + 1);
+                $txtQty.val(this.getCurrentQuantity() + 1);
                 $btnSubtractQty.prop("disabled", false);
             });
         
@@ -64,7 +63,7 @@ export default class MenuItem
             .click(() =>
             {
                 const minQty = 1;
-                let qty = getCurrentQuantity();
+                let qty = this.getCurrentQuantity();
 
                 if (qty === minQty)
                     return false;
@@ -76,5 +75,10 @@ export default class MenuItem
 
                 manageBtnSubtractDisabledAttr(qty);
             });
+    }
+
+    getCurrentQuantity()
+    {
+        return parseInt(this.$txtQty.val() || 0);
     }
 }
