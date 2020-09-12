@@ -22,7 +22,7 @@ class ItemsController extends AppController
         $this->paginate = [
             'contain' => ['ItemCategories'],
         ];
-        $items = $this->paginate($this->Items);
+        $items = $this->paginate($this->Items, ["limit" => 100]);
 
         $this->set(compact('items'));
     }
