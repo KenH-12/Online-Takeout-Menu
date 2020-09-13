@@ -27,6 +27,16 @@ class ItemsController extends AppController
         $this->set(compact('items'));
     }
 
+    public function adminIndex()
+    {
+        $this->paginate = [
+            'contain' => ['ItemCategories'],
+        ];
+        $items = $this->paginate($this->Items);
+
+        $this->set(compact('items'));
+    }
+
     /**
      * View method
      *
@@ -56,7 +66,7 @@ class ItemsController extends AppController
             if ($this->Items->save($item)) {
                 $this->Flash->success(__('The item has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'adminIndex']);
             }
             $this->Flash->error(__('The item could not be saved. Please, try again.'));
         }
@@ -82,7 +92,7 @@ class ItemsController extends AppController
             if ($this->Items->save($item)) {
                 $this->Flash->success(__('The item has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'adminIndex']);
             }
             $this->Flash->error(__('The item could not be saved. Please, try again.'));
         }
@@ -108,6 +118,6 @@ class ItemsController extends AppController
             $this->Flash->error(__('The item could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['action' => 'adminIndex']);
     }
 }
