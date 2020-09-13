@@ -27,6 +27,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </title>
     <?= $this->Html->meta('icon') ?>
 
+    <script src="https://kit.fontawesome.com/e4e779e0ee.js" crossorigin="anonymous"></script>
+
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('style.css') ?>
 

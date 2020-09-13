@@ -544,7 +544,10 @@ table td {
 .menu-item {
     padding: 5px 0;
     border-bottom: 1px dashed #666;
-    margin-bottom: 10px;
+}
+
+.menu-item:last-of-type {
+    margin-bottom: 20px;
 }
 
 .menu-item > div {
@@ -556,7 +559,6 @@ table td {
 }
 
 .menu-item > div > * {
-    vertical-align: middle;
     margin: 0;
     padding: 0;
 }
@@ -578,9 +580,15 @@ table td {
 }
 
 .menu-item .btn-add {
-    font-size: 2.2em;
-    line-height: 1em;
     cursor: pointer;
+}
+
+.menu-item .btn-add i {
+    
+    font-weight: 900;
+    font-size: 1.6em;
+    position: relative;
+    top: 0.2em;
 }
 
 .menu-item .qty-controls {
@@ -636,9 +644,13 @@ table td {
     background-color: #ccc;
 }
 
-.table-cell {
-    flex: 1;
+.table-cell:not(:first-of-type) {
+    flex: 10;
     font-size: 0.9em;
+}
+.table-cell:first-of-type {
+    flex: 1;
+    padding-right: 8px;
 }
 
 .table-cell.sub-heading {
@@ -649,8 +661,13 @@ table td {
     font-size: 1.1em;
 }
 
-#order-details .table-cell:not(:first-of-type) {
+#order-details .table-cell:not(:first-of-type):not(:nth-of-type(2)) {
     text-align: right;
+}
+
+#order-details .table-cell .fa-trash-alt {
+    color: #be140b;
+    cursor: pointer;
 }
 
 #no-items {

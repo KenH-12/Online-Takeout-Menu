@@ -29,7 +29,7 @@
             <?= $this->Form->hidden('id', ['value' => $item->id]) ?>
             <h5 class='title'><?= h($item->title) ?></h5>
             <p class='price'><?= $this->Number->currency($item->price) ?></p>
-            <p class='btn-add'>+</p>
+            <p class='btn-add'><i class="far fa-plus"></i></p>
         </div>
 
         <p class='description'><?= h($item->description ? $item->description . "." : "") ?></p>
@@ -43,22 +43,12 @@
         
     </div>
     <?php endforeach; ?>
-
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
-    </div>
 </div>
 
 <div id='order-details'>
     <div class='table'>
         <div class='table-row'>
+            <div class='table-cell'></div>
             <div class='table-cell table-heading'>Item</div>
             <div class='table-cell table-heading'>Price</div>
         </div>
@@ -68,17 +58,20 @@
 
         <div class='table-row hidden'>
             <div class='table-cell'></div>
+            <div class='table-cell'></div>
             <div class='table-cell sub-heading'>Sub Total:</div>
             <div class='table-cell' id='sub-total'></div>
         </div>
 
         <div class='table-row hidden'>
             <div class='table-cell'></div>
+            <div class='table-cell'></div>
             <div class='table-cell'>Taxes:</div>
             <div class='table-cell' id='taxes'></div>
         </div>
 
         <div class='table-row hidden'>
+            <div class='table-cell'></div>
             <div class='table-cell'></div>
             <div class='table-cell sub-heading'>Total:</div>
             <div class='table-cell sub-heading' id='total'></div>

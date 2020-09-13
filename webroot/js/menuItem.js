@@ -33,7 +33,7 @@ export default class MenuItem
     {
         const { $btnAddItem, $qtyControls } = this;
         
-        $btnAddItem.html("-");
+        $btnAddItem.html(`<i class="far fa-minus"></i>`);
         $qtyControls.removeClass("hidden");
 
         this.bindQuantityControlEventListeners();
@@ -44,7 +44,7 @@ export default class MenuItem
         const { $qtyControls, $btnAddItem } = this;
 
         $qtyControls.addClass("hidden");
-        $btnAddItem.html("+");
+        $btnAddItem.html(`<i class="far fa-plus"></i>`);
     }
 
     bindQuantityControlEventListeners()

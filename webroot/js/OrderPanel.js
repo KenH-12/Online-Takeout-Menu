@@ -31,13 +31,40 @@ export default class OrderPanel
         this.appendRow(itemId, qtyToAdd);
     }
 
+    removeItem($itemRow)
+    {
+        const itemId = $itemRow.data("item-id"),
+            item = this.items[itemId];
+        
+        $itemRow.remove();
+
+        if (--item.quantity < 1)
+        {
+            delete this.items[itemId];
+            
+            if (Object.keys(this.items).length === 0)
+            {
+                this.$container.find(".table-row").not(":first-of-type").addClass("hidden");
+                this.$placeholder.removeClass("hidden");
+                return false;
+            }
+        }
+        
+        this.updateTotal();
+    }
+
     appendRow(itemId, qtyToAdd)
     {
         const { title, price } = this.items[itemId];
         
+        let $newRow;
         for (let i = 0; i < qtyToAdd; i++)
-            this.newRow(itemId, [title, toCurrency(price)])
+        {
+            $newRow = this.newRow(itemId, [`<i class="far fa-trash-alt"></i>`, title, toCurrency(price)])
                 .insertBefore(this.$subTotal.parent());
+            
+            this.bindTrashClickEventListener($newRow);
+        }
         
         this.updateTotal();
     }
@@ -50,6 +77,15 @@ export default class OrderPanel
             $newRow.append(`<div class='table-cell'>${cellText}</div>`);
         
         return $newRow;
+    }
+
+    bindTrashClickEventListener($row)
+    {
+        const self = this;
+
+        $row.find(".fa-trash-alt")
+            .off("click")
+            .click(() => self.removeItem($row));
     }
 
     updateTotal()
