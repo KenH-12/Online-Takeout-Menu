@@ -10,7 +10,25 @@ export default class OrderPanel
         this.$taxes = $container.find("#taxes");
         this.$total = $container.find("#total");
 
-        this.items = {};
+        this.loadOrderFromSessionStorage();
+    }
+
+    loadOrderFromSessionStorage()
+    {
+        const sessionOrder = sessionStorage.getItem("order");
+
+        if (!sessionOrder)
+        {
+            this.items = {};
+            return false;
+        }
+        
+        this.items = JSON.parse(sessionOrder);
+        
+        for (let itemId in this.items)
+            this.appendRow(itemId, this.items[itemId].quantity);
+        
+        this.updateTotal();
     }
 
     addItem(menuItem)
@@ -28,7 +46,9 @@ export default class OrderPanel
                 quantity: qtyToAdd
             };
 
+        this.setSessionStorageItems();
         this.appendRow(itemId, qtyToAdd);
+        this.updateTotal();
     }
 
     removeItem($itemRow)
@@ -41,6 +61,7 @@ export default class OrderPanel
         if (--item.quantity < 1)
         {
             delete this.items[itemId];
+            this.setSessionStorageItems();
             
             if (Object.keys(this.items).length === 0)
             {
@@ -65,8 +86,6 @@ export default class OrderPanel
             
             this.bindTrashClickEventListener($newRow);
         }
-        
-        this.updateTotal();
     }
 
     newRow(itemId, cellTextArr)
@@ -122,6 +141,11 @@ export default class OrderPanel
         
         return subTotal;
     }
+
+    setSessionStorageItems()
+    {
+        sessionStorage.setItem("order", JSON.stringify(this.items));
+    } 
 }
 
 function toCurrency(n)
