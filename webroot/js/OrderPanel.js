@@ -17,7 +17,7 @@ export default class OrderPanel
     {
         const sessionOrder = sessionStorage.getItem("order");
 
-        if (!sessionOrder)
+        if (sessionOrder === "{}")
         {
             this.items = {};
             return false;
