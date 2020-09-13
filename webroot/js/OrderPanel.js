@@ -12,13 +12,14 @@ export default class OrderPanel
         this.$btnCheckout = $container.find("#btn-checkout");
 
         this.loadOrderFromSessionStorage();
+        this.$btnCheckout.click(() => this.proceedToCheckout());
     }
 
     loadOrderFromSessionStorage()
     {
         const sessionOrder = sessionStorage.getItem("order");
 
-        if (!sessionOrder || sessionOrder === "{}")
+        if (this.orderIsEmpty(sessionOrder))
         {
             this.items = {};
             return false;
@@ -31,6 +32,11 @@ export default class OrderPanel
         
         this.updateTotal();
         this.$btnCheckout.removeClass("hidden");
+    }
+
+    orderIsEmpty(sessionOrder)
+    {
+        return !sessionOrder || sessionOrder === "{}";
     }
 
     addItem(menuItem)
@@ -68,15 +74,19 @@ export default class OrderPanel
             this.setSessionStorageItems();
             
             if (Object.keys(this.items).length === 0)
-            {
-                this.$btnCheckout.addClass("hidden");
-                this.$container.find(".table-row").not(":first-of-type").addClass("hidden");
-                this.$placeholder.removeClass("hidden");
-                return false;
-            }
+                return this.clearTable();
         }
         
         this.updateTotal();
+    }
+
+    clearTable()
+    {
+        const { $btnCheckout, $container, $placeholder } = this;
+
+        $btnCheckout.addClass("hidden");
+        $container.find(".table-row").not(":first-of-type").addClass("hidden");
+        $placeholder.removeClass("hidden");
     }
 
     appendRow(itemId, qtyToAdd)
@@ -150,7 +160,34 @@ export default class OrderPanel
     setSessionStorageItems()
     {
         sessionStorage.setItem("order", JSON.stringify(this.items));
-    } 
+    }
+
+    proceedToCheckout()
+    {
+        const sessionOrder = sessionStorage.getItem("order");
+
+        if (this.orderIsEmpty(sessionOrder))
+            return this.clearTable();
+            
+        alert(`I haven't yet figured out how to post the order details to the OrdersController.
+Here is the order: ${JSON.stringify(this.getOrderData())}`);
+    }
+
+    getOrderData()
+    {
+        const { items } = this,
+            order = { items: [] };
+
+        for (let item_id in items)
+        {
+            order.items.push({
+                item_id,
+                quantity: items[item_id].quantity
+            });
+        }
+
+        return order;
+    }
 }
 
 function toCurrency(n)

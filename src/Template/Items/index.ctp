@@ -77,4 +77,6 @@
             <div class='table-cell sub-heading' id='total'></div>
         </div>
     </div>
+    
+    <a id='btn-checkout'>Proceed to Checkout</a>
 </div>
