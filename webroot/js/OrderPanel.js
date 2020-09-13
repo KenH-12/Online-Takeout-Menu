@@ -9,6 +9,7 @@ export default class OrderPanel
         this.$subTotal = $container.find("#sub-total");
         this.$taxes = $container.find("#taxes");
         this.$total = $container.find("#total");
+        this.$btnCheckout = $container.find("#btn-checkout");
 
         this.loadOrderFromSessionStorage();
     }
@@ -17,7 +18,7 @@ export default class OrderPanel
     {
         const sessionOrder = sessionStorage.getItem("order");
 
-        if (sessionOrder === "{}")
+        if (!sessionOrder || sessionOrder === "{}")
         {
             this.items = {};
             return false;
@@ -29,6 +30,7 @@ export default class OrderPanel
             this.appendRow(itemId, this.items[itemId].quantity);
         
         this.updateTotal();
+        this.$btnCheckout.removeClass("hidden");
     }
 
     addItem(menuItem)
@@ -49,6 +51,8 @@ export default class OrderPanel
         this.setSessionStorageItems();
         this.appendRow(itemId, qtyToAdd);
         this.updateTotal();
+
+        this.$btnCheckout.removeClass("hidden");
     }
 
     removeItem($itemRow)
@@ -65,6 +69,7 @@ export default class OrderPanel
             
             if (Object.keys(this.items).length === 0)
             {
+                this.$btnCheckout.addClass("hidden");
                 this.$container.find(".table-row").not(":first-of-type").addClass("hidden");
                 this.$placeholder.removeClass("hidden");
                 return false;
