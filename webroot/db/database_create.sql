@@ -119,3 +119,10 @@ INSERT INTO items (title, price, item_category_id) VALUES ('Mango Lassi', 2.99, 
 INSERT INTO items (title, price, item_category_id) VALUES ('Doodh Patti (Masala Tea)', 2.94, 9);
 -- Desserts
 INSERT INTO items (title, price, item_category_id) VALUES ('Gulab Jamun', 2.99, 10);
+
+-- Sample order
+INSERT INTO orders (order_date, order_time, order_type_id) VALUES (CURDATE(), CURTIME(), 1);
+INSERT INTO orders_items (order_id, item_id, quantity) VALUES (1, 1, 1);
+INSERT INTO orders_items (order_id, item_id, quantity) VALUES (1, 10, 1);
+INSERT INTO orders_items (order_id, item_id, quantity) VALUES (1, 12, 1);
+INSERT INTO orders_items (order_id, item_id, quantity) VALUES (1, 23, 3);
