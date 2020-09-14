@@ -6,7 +6,9 @@
 ?>
 <div class="items index large-9 medium-8 columns content">
 
-    <h2><?= __('Online Takeout Menu') ?></h2>
+    <h2><?= __('Taste of Bombay') ?></h2>
+    <h3><?= __('Online Takeout Menu') ?></h3>
+
     <?php
         $currentCategory = false;
         foreach ($items as $item):
