@@ -14,15 +14,11 @@
     </ul>
 </nav>
 <div class="orderTypes view large-9 medium-8 columns content">
-    <h3><?= h($orderType->id) ?></h3>
+    <h3><?= h("Order Type") ?></h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Description') ?></th>
             <td><?= h($orderType->description) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($orderType->id) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Fee') ?></th>

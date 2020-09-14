@@ -11,7 +11,6 @@
         <li><?= $this->Html->link(__('List Item Categories'), ['controller' => 'ItemCategories', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Item Category'), ['controller' => 'ItemCategories', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Orders'), ['controller' => 'Orders', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Order'), ['controller' => 'Orders', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="items index large-9 medium-8 columns content">
@@ -19,7 +18,6 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('title') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('price') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('description') ?></th>
@@ -30,7 +28,6 @@
         <tbody>
             <?php foreach ($items as $item): ?>
             <tr>
-                <td><?= $this->Number->format($item->id) ?></td>
                 <td><?= h($item->title) ?></td>
                 <td><?= $this->Number->currency($item->price) ?></td>
                 <td><?= h($item->description) ?></td>

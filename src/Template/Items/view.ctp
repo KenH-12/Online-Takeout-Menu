@@ -32,10 +32,6 @@
             <td><?= $item->has('item_category') ? $this->Html->link($item->item_category->title, ['controller' => 'ItemCategories', 'action' => 'view', $item->item_category->id]) : '' ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($item->id) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Price') ?></th>
             <td><?= $this->Number->currency($item->price) ?></td>
         </tr>
@@ -45,20 +41,14 @@
         <?php if (!empty($item->orders)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Order Date') ?></th>
                 <th scope="col"><?= __('Order Time') ?></th>
-                <th scope="col"><?= __('Confirmed') ?></th>
-                <th scope="col"><?= __('Order Type Id') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($item->orders as $orders): ?>
             <tr>
-                <td><?= h($orders->id) ?></td>
                 <td><?= h($orders->order_date) ?></td>
-                <td><?= h($orders->order_time) ?></td>
-                <td><?= h($orders->confirmed) ?></td>
-                <td><?= h($orders->order_type_id) ?></td>
+                <td><?= h($orders->order_time->i18nFormat("hh:mm")) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Orders', 'action' => 'view', $orders->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Orders', 'action' => 'edit', $orders->id]) ?>

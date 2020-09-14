@@ -15,7 +15,6 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('description') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('fee') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -24,7 +23,6 @@
         <tbody>
             <?php foreach ($orderTypes as $orderType): ?>
             <tr>
-                <td><?= $this->Number->format($orderType->id) ?></td>
                 <td><?= h($orderType->description) ?></td>
                 <td><?= $this->Number->currency($orderType->fee) ?></td>
                 <td class="actions">

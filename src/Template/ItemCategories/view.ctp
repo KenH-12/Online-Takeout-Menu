@@ -31,24 +31,20 @@
         </tr>
     </table>
     <div class="related">
-        <h4><?= __('Related Items') ?></h4>
+        <h4><?= __('Items in Category') ?></h4>
         <?php if (!empty($itemCategory->items)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Title') ?></th>
                 <th scope="col"><?= __('Price') ?></th>
                 <th scope="col"><?= __('Description') ?></th>
-                <th scope="col"><?= __('Item Category') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($itemCategory->items as $items): ?>
             <tr>
-                <td><?= h($items->id) ?></td>
                 <td><?= h($items->title) ?></td>
-                <td><?= h($items->price) ?></td>
+                <td><?= h($this->Number->currency($items->price)) ?></td>
                 <td><?= h($items->description) ?></td>
-                <td><?= h($itemCategory->title) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Items', 'action' => 'view', $items->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Items', 'action' => 'edit', $items->id]) ?>
